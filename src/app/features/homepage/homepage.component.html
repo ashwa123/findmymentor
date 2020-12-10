@@ -1,0 +1,68 @@
+<div class="carousel-conatiner">
+    <button class="prev button-design" (click) = "prev()"><</button>
+
+    <div class="carosuel-subcontainer" #carousel [style.left.%] = "leftPosition">
+        <ul>
+            <li *ngFor = "let imageUrl of carouselImages">
+                <img [src] = "imageUrl" alt="mentoring">
+            </li>
+        </ul>
+    </div>
+    <button class="next button-design" (click) = "next()">></button>
+</div>
+
+<div class="search-container">
+    <div class="chip-contanier">
+        <mat-form-field appearance = "legacy">
+            <input matInput [(ngModel)] = "searchValue" (change) = "filterChips()" placeholder="Search">
+        </mat-form-field>
+    </div>
+
+    <div class="chip-contanier">
+        <mat-chip-list #chipList>
+            <mat-chip *ngFor = "let chip of filterchipsarray"
+            [removable]="removable"
+            (removed)="remove(chip)">
+            {{chip}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+        </mat-chip-list>
+    </div>
+</div>
+
+
+<div class="base-container">
+    <div class="container">
+        <div *ngFor = "let mentor of mentorList; let i = index" class="card-width">
+            <mat-card [class.mat-elevation-z6]="true">
+                <div class="card-header">
+                    <span><img [src] = "avatarImage" width="40" height="40"></span>
+                    <h2 class="avatar-img">{{mentor.name}}</h2>
+                </div>
+    
+                <mat-card-content>
+                    <div>
+                        <div>{{ 'HOME.MILES' | translate }}:</div>
+                        <div><b>{{mentor.miles_away}}</b></div>
+                    </div>
+    
+                    <div>
+                        <div>{{ 'HOME.EXPERTISE' | translate }}:</div>
+                        <div><b>{{mentor.expertise}}</b></div>
+                    </div>
+                    
+                    <div class="button-container">
+                        <button mat-button color="primary" (click)="openForm()">{{ 'HOME.REQUEST' | translate }}</button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+<div class="paginate-container">
+    <mat-paginator [length]="mentors?.length"
+                [pageSize]="9"
+                    [pageSizeOptions]="[9, 20, 30, 50]" (page)="paginate($event)">
+    </mat-paginator>
+</div>

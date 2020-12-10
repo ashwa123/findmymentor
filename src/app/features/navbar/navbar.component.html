@@ -1,0 +1,17 @@
+<div>
+    <nav [class.mat-elevation-z5]="true">
+        <div class="lang-container">
+            <h2 class="title">Find my Mentor</h2>
+            <div class = "lang">
+                <mat-form-field appearance="legacy">
+                    <mat-label class="text-color">{{ 'HOME.SELECT' | translate }}</mat-label>
+                    <mat-select #langselect (selectionChange) = "translate.use(langselect.value)">
+                      <mat-option *ngFor = "let lang of translate.getLangs()" [value] = "lang">
+                        {{lang}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+        </div>
+    </nav>
+</div>

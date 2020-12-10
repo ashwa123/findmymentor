@@ -1,0 +1,18 @@
+.full-width {
+    mat-form-field {
+        width: 100%;
+    }
+}
+
+.radio-button {
+    mat-radio-group {
+        mat-radio-button:last-child {
+            margin-left: 12px;
+        }
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}
