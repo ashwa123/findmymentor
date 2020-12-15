@@ -12,7 +12,8 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './features/homepage/homepage.component';
 import { MaterailModule } from './shared/materail/materail.module';
 import { RequestFormComponent } from './features/request-form/request-form.component';
-import { NavbarComponent } from './features/navbar/navbar.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { FilterPipe } from './shared/filter/filter.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -24,6 +25,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomepageComponent,
     RequestFormComponent,
     NavbarComponent,
+    FilterPipe,
     
   ],
   imports: [

@@ -23,13 +23,15 @@ export class HomepageComponent implements OnInit {
     '../../../assets/carousel/mentorImage1.png',
     '../../../assets/carousel/mentorImage3.png',
     '../../../assets/carousel/mentorImage4.png'
-  ]
+  ];
+  imageLength = this.carouselImages.length;
+  carouselLength = 1;
 
   constructor(
     private mentorService: MentorService,
     public dialog: MatDialog,
     iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,
-    public translate: TranslateService
+    public translate: TranslateService,
   ) {}
 
   ngOnInit(): void {
@@ -72,13 +74,17 @@ export class HomepageComponent implements OnInit {
     if (index >= 0) {
       this.filterchipsarray.splice(index, 1);
     }
+
+    this.searchValue = ''
   }
 
   prev() {
+    this.carouselLength = this.carouselLength - 1
     this.leftPosition = this.leftPosition + 100;
   }
 
   next() {
+    this.carouselLength = this.carouselLength + 1;
     this.leftPosition = this.leftPosition - 100;
   }
 

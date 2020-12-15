@@ -1,14 +1,14 @@
 <div class="carousel-conatiner">
-    <button class="prev button-design" (click) = "prev()"><</button>
+    <button [disabled] = "carouselLength == 1" class="prev button-design" (click) = "prev()"><</button>
 
     <div class="carosuel-subcontainer" #carousel [style.left.%] = "leftPosition">
         <ul>
-            <li *ngFor = "let imageUrl of carouselImages">
+            <li *ngFor = "let imageUrl of carouselImages; let i = index">
                 <img [src] = "imageUrl" alt="mentoring">
             </li>
         </ul>
     </div>
-    <button class="next button-design" (click) = "next()">></button>
+    <button [disabled] = "imageLength == carouselLength" class="next button-design" (click) = "next()">></button>
 </div>
 
 <div class="search-container">
@@ -33,7 +33,7 @@
 
 <div class="base-container">
     <div class="container">
-        <div *ngFor = "let mentor of mentorList; let i = index" class="card-width">
+        <div *ngFor = "let mentor of mentorList | filter : 'expertise': searchValue" class="card-width">
             <mat-card [class.mat-elevation-z6]="true">
                 <div class="card-header">
                     <span><img [src] = "avatarImage" width="40" height="40"></span>
